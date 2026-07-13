@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+
+# Training dataset (~4.4GB) — never belongs in the repo, reimport locally if needed
+images/
+
+# Derived/regeneratable training artifacts — rebuild via scripts/data_prep, scripts/training,
+# scripts/eval rather than tracking in git
+cache/
+checkpoints/
+runs/
+plots/
+
+# Secrets, local config
+.env
+.streamlit/secrets.toml
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
