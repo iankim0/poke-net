@@ -1,9 +1,7 @@
-# CPU-only deploy requirements for the Streamlit app (app.py). This is what Streamlit Community
-# Cloud installs — it has no GPU, and torch's default PyPI wheel on Linux pulls several hundred
-# MB of unused CUDA runtime packages unless pinned to the CPU build below.
+# CPU-only deploy requirements for the Streamlit app (app.py)
 --extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.6.0+cpu
-torchvision==0.21.0+cpu
+torch==2.9.1+cpu
+torchvision==0.24.1+cpu
 
 # Pretrained backbone (downloads ViT-B/32 weights on first use)
 open_clip_torch>=2.24
