@@ -1,3 +1,12 @@
+import os
+
+# The open_clip backbone checkpoint (~578MB) is pre-cached in hf_cache/ (committed via Git LFS) so a
+# Space cold start never triggers a runtime download of it — that download was hanging/stalling on
+# the free CPU-basic tier. Must be set before model.inference (-> open_clip -> huggingface_hub) is
+# imported, since huggingface_hub reads these as module-level constants at import time.
+os.environ.setdefault("HF_HUB_CACHE", os.path.join(os.path.dirname(__file__), "hf_cache"))
+os.environ.setdefault("HF_HUB_OFFLINE", "1")
+
 import streamlit as st
 from PIL import Image
 
