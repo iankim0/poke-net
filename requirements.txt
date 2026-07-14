@@ -1,18 +1,13 @@
---extra-index-url https://download.pytorch.org/whl/cu124
-
-# CUDA build — matched pair, forced from the PyTorch index above so no
-# CPU-only wheel can slip in as a transitive dependency.
-torch==2.6.0+cu124
-torchvision==0.21.0+cu124
+# CPU-only deploy requirements for the Streamlit app (app.py). This is what Streamlit Community
+# Cloud installs — it has no GPU, and torch's default PyPI wheel on Linux pulls several hundred
+# MB of unused CUDA runtime packages unless pinned to the CPU build below.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.6.0+cpu
+torchvision==0.21.0+cpu
 
 # Pretrained backbone (downloads ViT-B/32 weights on first use)
 open_clip_torch>=2.24
 
-# Training head + eval + logging
-numpy>=2.1
+# App
+streamlit>=1.38
 pillow>=11.0
-scikit-learn>=1.5
-tensorboard>=2.18
-
-# Step 6 embedding visualization
-matplotlib>=3.11
